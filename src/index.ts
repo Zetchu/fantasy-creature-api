@@ -21,5 +21,7 @@ app.get('/', (_req, res) => {
 app.use('/creatures', creatures);
 app.use(errorHandler);
 
-const PORT = process.env.PORT ?? 5003;
-app.listen(PORT, () => console.log(`Server on http://localhost:${PORT}`));
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = 5003;
+  app.listen(PORT, () => console.log(`Server on http://localhost:${PORT}`));
+}
