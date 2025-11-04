@@ -37,7 +37,7 @@ Returns API information and available routes.
 
 **Example Response**
 
-````json
+```json
 {
   "name": "Fantasy Creature Generator API",
   "routes": [
@@ -45,7 +45,7 @@ Returns API information and available routes.
     { "path": "/creatures/team", "query": ["n", "distinct", "element", "rarity", "minTotal", "maxTotal"] }
   ]
 }
-
+```
 ---
 
 ### 🐲 `GET /creatures/random`
@@ -150,4 +150,4 @@ src/
  └── middleware/error.ts   # Error handling
 
 ```
-````
+
