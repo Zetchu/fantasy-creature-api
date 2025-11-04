@@ -86,7 +86,7 @@ GET http://localhost:5003/creatures/random?element=fire&rarity=epic
     "heart is bound in runic chains"
   ]
 }
-
+```
 ---
 
 ### 🧙‍♂️ `GET /creatures/team`
@@ -123,18 +123,18 @@ Includes:
 **Run tests**
 ```bash
 npm test
-
+```
 ## ⚙️ Running Locally
 
 **1️⃣ Install dependencies**
 ```bash
 npm install
-
+```
 **2️⃣ Start the server**
 
 ```bash
 npm run dev
-
+```
 **3️⃣ Open in browser**
 
 http://localhost:5003/
@@ -149,4 +149,5 @@ src/
  ├── lib/types.ts          # Type definitions
  └── middleware/error.ts   # Error handling
 
+```
 ````
