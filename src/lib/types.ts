@@ -30,11 +30,9 @@ export interface Creature {
   rarity: Rarity;
   stats: Stats;
   traits: string[];
-  seed?: string;
 }
 
 export interface GenerateConstraints {
-  seed?: string;
   element?: Element;
   rarity?: Rarity;
   minTotal?: number;

@@ -12,7 +12,7 @@ app.get('/', (_req, res) => {
     routes: [
       {
         path: '/creatures/random',
-        query: ['seed', 'element', 'rarity', 'minTotal', 'maxTotal'],
+        query: ['element', 'rarity', 'minTotal', 'maxTotal'],
       },
     ],
   });

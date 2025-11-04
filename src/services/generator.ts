@@ -5,7 +5,6 @@ import {
   Rarity,
   Stats,
 } from '../lib/types';
-import { hashSeed, mulberry32 } from '../lib/rng';
 
 const ELEMENTS: Element[] = [
   'fire',
@@ -23,57 +22,101 @@ const ELEMENTS: Element[] = [
 const RARITIES: Rarity[] = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
 
 const NAME_A = [
-  'Pyro',
-  'Aqua',
-  'Terra',
-  'Zeph',
-  'Volt',
-  'Glacia',
-  'Umbra',
-  'Lux',
-  'Sylva',
-  'Ferr',
-  'Etho',
+  'Aeth',
+  'Vael',
+  'Drak',
+  'Syl',
+  'Noct',
+  'Kael',
+  'Zer',
+  'Rav',
+  'Iri',
+  'Thal',
+  'Vor',
+  'Luma',
+  'Nyx',
+  'Ezra',
+  'Quel',
+  'Ashen',
+  'Obsi',
+  'Grim',
+  'Serap',
+  'Arca',
+  'Myrr',
+  'Umbr',
+  'Kryn',
+  'Eld',
 ];
 const NAME_B = [
-  'fang',
-  'warden',
+  'riel',
+  'gorath',
+  'syl',
+  'thas',
+  'wyn',
+  'vorn',
+  'astra',
+  'shade',
+  'bane',
+  'dread',
+  'mourn',
+  'frost',
+  'flame',
+  'sunder',
   'weaver',
-  'mancer',
-  'stalker',
-  'blade',
-  'bloom',
+  'soulrend',
+  'silence',
+  'whisper',
+  'thorn',
+  'watcher',
+  'seer',
   'caller',
-  'smith',
-  'singer',
-  'roamer',
+  'warden',
+  'walker',
+  'binder',
 ];
 const TITLES = [
-  'Warden',
-  'Herald',
-  'Seeker',
-  'Keeper',
-  'Shaper',
-  'Sentinel',
-  'Sage',
-  'Nomad',
-  'Champion',
-  'Arbiter',
-  'Harbinger',
+  'the Voidwalker',
+  'the Eternal Warden',
+  'the Last Seer',
+  'the Oathbreaker',
+  'the Pale Flame',
+  'the Frostbound Herald',
+  'the Stormcaller',
+  'the Bone Crown',
+  'the Dawnless',
+  'the Chainspeaker',
+  'the Hollow Saint',
+  'the Eclipse Herald',
+  'the Rune-Bound',
+  'the Bloodforged',
+  'the Whisper in the Roots',
+  'the Serpent of Ashes',
+  'the Keeper of Black Sunlight',
+  'the Shattered Prophet',
+  'the Hand of the Abyss',
+  'of the Thornwild',
+  'of the Silent Depths',
 ];
 
 const TRAITS = [
-  'bioluminescent markings',
-  'smolders in moonlight',
-  'echoes footsteps',
-  'leaves frost prints',
-  'magnetized aura',
-  'whispers to roots',
-  'shifts shade at noon',
-  'conductive scales',
-  'glass feathers',
-  'runic scars',
+  'carries a curse older than empires',
+  'drinks moonlight instead of water',
+  'bleeds silver embers',
+  'speaks in voices that are not its own',
+  'leaves frost sigils where it walks',
+  'whispers bargains to sleeping minds',
+  'is followed by silent, unseen hands',
+  'heart is bound in runic chains',
+  'bones resonate like crystal when angered',
+  'shadow moves half a second late',
+  'eyes reflect futures that never happened',
+  'smells faintly of burnt roses and ozone',
+  'plants bow in its presence',
+  'cannot cross consecrated thresholds',
+  'wears a crown of living thorns',
 ];
+
+const rng = () => Math.random();
 
 function pick<T>(rng: () => number, arr: T[]): T {
   return arr[Math.floor(rng() * arr.length)];
@@ -133,9 +176,6 @@ function allocateStats(rng: () => number, total: number): Stats {
 }
 
 export function generateCreature(input: GenerateConstraints = {}): Creature {
-  const seed = input.seed ?? `${Date.now()}:${Math.random()}`;
-  const rng = mulberry32(hashSeed(seed));
-
   const rarity = rollRarity(rng, input.rarity);
   let total = statBudgetFor(rarity);
   if (input.minTotal) total = Math.max(total, input.minTotal);
@@ -168,5 +208,5 @@ export function generateCreature(input: GenerateConstraints = {}): Creature {
     stats.hp += 8;
   }
 
-  return { name, title, elements, rarity, stats, traits, seed };
+  return { name, title, elements, rarity, stats, traits };
 }
